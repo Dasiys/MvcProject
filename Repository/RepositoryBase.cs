@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -19,7 +20,8 @@ namespace Repository
         }
         public void Add(TEntity entity)
         {
-            this._unitOfWork.RoleContext.Set<TEntity>().
+            this._unitOfWork.RoleContext.Set<TEntity>().Attach(entity);
+            this._unitOfWork.RoleContext.Entry(entity).State = EntityState.Added;
         }
 
         public IQueryable<TEntity> All()
@@ -29,7 +31,8 @@ namespace Repository
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            this._unitOfWork.RoleContext.Set<TEntity>().Attach(entity);
+            this._unitOfWork.RoleContext.Entry(entity).State = EntityState.Deleted;
         }
 
         public IQueryable<TEntity> Fetch(Expression<Func<TEntity, bool>> predicate)
