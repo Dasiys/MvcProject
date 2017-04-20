@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model
 {
-    interface IEntity
+    public interface IEntity
     {
         int Id { get; set; }
     }
