@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model", "Domain.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Repository", "Model.Repository\Model.Repository.csproj", "{FADE9A12-F2BF-415B-A039-ED617D73C32D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.DependencyInjection", "DAL.DependencyInjection\DAL.DependencyInjection.csproj", "{4283BDC8-128B-4D85-A68B-D9EC110E7DED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FADE9A12-F2BF-415B-A039-ED617D73C32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FADE9A12-F2BF-415B-A039-ED617D73C32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FADE9A12-F2BF-415B-A039-ED617D73C32D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4283BDC8-128B-4D85-A68B-D9EC110E7DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4283BDC8-128B-4D85-A68B-D9EC110E7DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4283BDC8-128B-4D85-A68B-D9EC110E7DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4283BDC8-128B-4D85-A68B-D9EC110E7DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +77,6 @@ Global
 		{47AD1BF7-EE5C-43C3-878B-D3605309502A} = {A0C68EE9-F483-4A44-B713-039E1F10DB01}
 		{3EA111DC-8820-4D38-9844-9B7CD2458D6C} = {7AE38DB2-8817-4ECB-BF48-616AC7FD911F}
 		{FADE9A12-F2BF-415B-A039-ED617D73C32D} = {7AE38DB2-8817-4ECB-BF48-616AC7FD911F}
+		{4283BDC8-128B-4D85-A68B-D9EC110E7DED} = {A0C68EE9-F483-4A44-B713-039E1F10DB01}
 	EndGlobalSection
 EndGlobal

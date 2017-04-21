@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Repository.Permissions
 {
-    public interface IPermissionsRepository:IRepository<Domain.Model.Permissions>
+    public interface IPermissionRepository:IRepository<Domain.Model.Permissions>
     {
     }
 }

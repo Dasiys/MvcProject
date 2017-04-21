@@ -8,6 +8,7 @@ namespace Model.Repository
 {
     public interface IDeleteRepository<in TEntity>
     {
+        void Delete(int id);
         void Delete(TEntity entity);
     }
 }
