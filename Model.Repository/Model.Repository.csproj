@@ -45,13 +45,12 @@
     <Compile Include="IQueryRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUpdateRepository.cs" />
+    <Compile Include="Permissions\IPermissionsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolePermissionsMap\IRolePermissionsMapRepository.cs" />
+    <Compile Include="Role\IRoleRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Permissions\" />
-    <Folder Include="RolePermissionsMap\" />
-    <Folder Include="Role\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
       <Project>{3ea111dc-8820-4d38-9844-9b7cd2458d6c}</Project>
