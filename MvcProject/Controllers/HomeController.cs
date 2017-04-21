@@ -14,5 +14,11 @@ namespace MvcProject.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            ViewBag.Title = "Test Page";
+            return View();
+        }
     }
 }
