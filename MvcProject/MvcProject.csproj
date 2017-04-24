@@ -242,8 +242,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
-    <Content Include="Views\Home\TestMethod.cshtml" />
+    <Content Include="Views\Home\AddPermission.cshtml" />
+    <Content Include="Views\Home\Permissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +268,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationInterface\ApplicationInterface.csproj">
+      <Project>{1AE32F5F-74C6-42EE-8674-A5A3B9AA8640}</Project>
+      <Name>ApplicationInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL.DependencyInjection\DAL.DependencyInjection.csproj">
       <Project>{4283bdc8-128b-4d85-a68b-d9ec110e7ded}</Project>
       <Name>DAL.DependencyInjection</Name>
@@ -275,6 +279,18 @@
     <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj">
       <Project>{51bee9b6-604a-472a-bcd2-dd06d4f570bf}</Project>
       <Name>DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{3EA111DC-8820-4D38-9844-9B7CD2458D6C}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Add\Model.Add.csproj">
+      <Project>{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}</Project>
+      <Name>Model.Add</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Dtos\Model.Dtos.csproj">
+      <Project>{4C9BD128-D7CC-47D6-BA3F-B5765E4889B1}</Project>
+      <Name>Model.Dtos</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

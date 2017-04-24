@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ApplicationInterface;
 using Domain.Model;
 using Infrastructure.UnitOfWork;
+using Model.Dtos;
 using Model.Repository.Permissions;
 using Repository;
 using Repository.Permissions;
@@ -28,20 +30,53 @@ namespace Re
             _unitOfWork.Commit();
         }
 
+        public IList<PermissionsDto> ChildPermiisons()
+        {
+            return this.Query(m => !m.IsParent);
+        }
+
         public void Delete(int id)
         {
             _permissionsRepository.Delete(id);
             _unitOfWork.Commit();
         }
 
-        public IList<Permissions> Fetch()
+        public IList<PermissionsDto> Fetch()
         {
-            return _permissionsRepository.All().Select(_ => new Permissions
+            return _permissionsRepository.All()?.Select(_ => new PermissionsDto
             {
                 Id = _.Id,
                 IsParent = _.IsParent,
                 Name = _.Name,
                 ParentId = _.ParentId
+            })?.ToList();
+        }
+
+        public IList<PermissionsDto> ParentPermissions()
+        {
+            return this.Query(m => m.IsParent);
+        }
+
+        public IList<PermissionsDto> Query(Expression<Func<Permissions, bool>> param)
+        {
+            return _permissionsRepository.Fetch(param)?.Select(_=>new PermissionsDto
+            {
+                Id = _.Id,
+                IsParent = _.IsParent,
+                Name = _.Name,
+                ParentId = _.ParentId
+            })?.ToList();
+        }
+
+        public IList<PermissionsMenu> GetMenu(IList<PermissionsDto> permissionsDto, int parentId)
+        {
+           return permissionsDto.Where(m => m.ParentId == parentId).Select(permission => new PermissionsMenu()
+            {
+                ParentId = parentId,
+                IsParent = permission.IsParent,
+                Name = permission.Name,
+                Id = permission.Id,
+                ChildMenu = GetMenu(permissionsDto, permission.Id)
             })?.ToList();
         }
     }

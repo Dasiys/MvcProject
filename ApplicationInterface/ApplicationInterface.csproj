@@ -51,6 +51,10 @@
       <Project>{3EA111DC-8820-4D38-9844-9B7CD2458D6C}</Project>
       <Name>Domain.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model.Dtos\Model.Dtos.csproj">
+      <Project>{4C9BD128-D7CC-47D6-BA3F-B5765E4889B1}</Project>
+      <Name>Model.Dtos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

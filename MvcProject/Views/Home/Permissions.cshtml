@@ -1,0 +1,16 @@
+﻿@using Model.Dtos;
+@model IEnumerable<PermissionsMenu>
+
+@{
+    foreach (var memuItem in Model)
+    {
+
+        <ul>
+            <li>
+                <span>@memuItem.Name
+                </span>
+                @Html.Partial("~/Views/Home/Permissions.cshtml", memuItem.ChildMenu)
+            </li>
+        </ul>
+    }
+}

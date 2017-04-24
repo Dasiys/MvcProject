@@ -1,0 +1,27 @@
+﻿@using Model.Dtos
+@model IEnumerable<PermissionsDto>
+<form action="@Url.Action("AddPermissions","Home",new { })">
+    <div>
+        @Html.Label("Name", "名称:")
+        @Html.TextBox("Name", string.Empty)
+        <br />
+        @Html.Label("IsParent", "是否为父类:")
+        @Html.RadioButton("IsParent", "1", false)
+        <span>是</span>
+        @Html.RadioButton("IsParent", "0", true)
+        <span>否</span>
+        <br />
+        @Html.Label("ParentId", "父级菜单:")
+        <select id="ParentId" name="ParentId">
+            <option value="0">无</option>
+            @{ 
+                foreach(var item in Model)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+        <br />
+        <button type="submit">添加</button>
+    </div>
+</form>
