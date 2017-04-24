@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace MvcProject.Controllers
 {
@@ -18,6 +14,13 @@ namespace MvcProject.Controllers
         public ActionResult Test()
         {
             ViewBag.Title = "Test Page";
+            ViewBag.Model = "Test";
+            return View();
+        }
+
+        public ActionResult TestMethod()
+        {
+            ViewBag.Model = "ModelModelModel";
             return View();
         }
     }
