@@ -1,0 +1,13 @@
+﻿@using Model.Dtos;
+@model IEnumerable<PermissionsMenu>
+<div>
+    <form action="@Url.Action("AddRoles","Home",new { })">
+        @Html.Label("Name","名称:")
+        @Html.TextBox("Name",string.Empty)
+        <br />
+        @Html.Label("No","编号:")
+        @Html.TextBox("No", string.Empty)
+        @Html.Partial("~/Views/Home/Permissions.cshtml", Model)
+        <button type="submit">添加</button>
+    </form>
+</div>

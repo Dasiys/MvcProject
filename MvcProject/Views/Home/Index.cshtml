@@ -1,8 +1,9 @@
 ﻿@using Model.Dtos;
 <div class="jumbotron">
     <h1>权限</h1>
-     @Html.Partial("~/Views/Home/AddPermission.cshtml",ViewBag.ParentPermissions as IEnumerable<PermissionsDto>)
-     <hr />
-     @Html.Partial("~/Views/Home/Permissions.cshtml",ViewBag.PermissionsMenu as IEnumerable<PermissionsMenu>)
+    @Html.Partial("~/Views/Home/AddPermission.cshtml", ViewBag.ParentPermissions as IEnumerable<PermissionsDto>)
+    <hr />
+    <h1>角色</h1>
+    @Html.Partial("~/Views/Home/AddRoles.cshtml", ViewBag.PermissionsMenu as IEnumerable<PermissionsMenu>)
 </div>
 

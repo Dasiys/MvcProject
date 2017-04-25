@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using ApplicationInterface;
 using Domain.Model;
 using Model.Add;
@@ -24,6 +25,12 @@ namespace MvcProject.Controllers
         {
             _permissionService.Add(new Permissions { IsParent = permissions.IsParent == 1, Name = permissions.Name, ParentId = permissions.ParentId });
             return RedirectToAction("Index","Home");
+        }
+
+        public ActionResult AddRoles(List<string> permissionsId)
+        {
+
+            return RedirectToAction("Index", "Home");
         }
 
     }
