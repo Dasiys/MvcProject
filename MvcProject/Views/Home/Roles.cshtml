@@ -1,0 +1,10 @@
+﻿@using Model.Dtos;
+@model IEnumerable<RoleMenu>
+
+@{ 
+    foreach(var menuItem in Model)
+    {
+        <span>@menuItem.Name</span>
+        @Html.Partial("~/Views/Home/RolePermissions.cshtml", menuItem.Menu)
+    }
+}

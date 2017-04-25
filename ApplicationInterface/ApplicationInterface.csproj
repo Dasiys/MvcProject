@@ -51,6 +51,10 @@
       <Project>{3EA111DC-8820-4D38-9844-9B7CD2458D6C}</Project>
       <Name>Domain.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model.Add\Model.Add.csproj">
+      <Project>{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}</Project>
+      <Name>Model.Add</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model.Dtos\Model.Dtos.csproj">
       <Project>{4C9BD128-D7CC-47D6-BA3F-B5765E4889B1}</Project>
       <Name>Model.Dtos</Name>

@@ -8,6 +8,6 @@ namespace Model.Repository
 {
     public interface IAddRepository<in TEntity>
     {
-        void Add(TEntity entity);
+        int Add(TEntity entity);
     }
 }

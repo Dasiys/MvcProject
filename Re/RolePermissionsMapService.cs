@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ApplicationInterface;
 using Domain.Model;
 using Infrastructure.UnitOfWork;
+using Model.Dtos;
 using Model.Repository.RolePermissionsMap;
 
 namespace Re
@@ -15,11 +17,12 @@ namespace Re
 
         private readonly IUnitOfWork _unitOfWOrk;
         private readonly IRolePermissionsMapRepository _rolePermissionsMapRepository;
-
-        public RolePermissionsMapService(IUnitOfWork unitOfWork,IRolePermissionsMapRepository rolePermissionMapRepositoty)
+        private readonly IPermissionsService _permissionService;
+        public RolePermissionsMapService(IUnitOfWork unitOfWork,IRolePermissionsMapRepository rolePermissionMapRepositoty,IPermissionsService permissionsService)
         {
             _unitOfWOrk = unitOfWork;
             _rolePermissionsMapRepository = rolePermissionMapRepositoty;
+            _permissionService = permissionsService;
         }
         public void Add(RolePermissionsMap permissions)
         {
@@ -33,14 +36,41 @@ namespace Re
             _unitOfWOrk.Commit();
         }
 
-        public IList<RolePermissionsMap> Fetch()
+        public IList<RolePermissionsMapDto> Fetch()
         {
-            return _rolePermissionsMapRepository.All().Select(_ => new RolePermissionsMap
+            return _rolePermissionsMapRepository.All().Select(_ => new RolePermissionsMapDto
             {
                 Id = _.Id,
                 ParentId = _.ParentId,
                 PermissionId = _.PermissionId,
                 RoleId = _.RoleId
+            })?.ToList();
+        }
+
+        public IList<RolePermissionsMapDto> Query(Expression<Func<RolePermissionsMap, bool>> param)
+        {
+           return _rolePermissionsMapRepository.Fetch(param).Select(_ => new RolePermissionsMapDto
+           {
+               Id = _.Id,
+               ParentId = _.ParentId,
+               PermissionId = _.PermissionId,
+               RoleId = _.RoleId
+           })?.ToList();
+        }
+
+        public IList<RolePermissionsMapMenu> GetRolePermissionsMenu(Expression<Func<RolePermissionsMap, bool>> param)
+        {
+            var dtos = this.Query(param);
+            return GetMenu(dtos, 0, _permissionService.Fetch());
+        }
+
+        public IList<RolePermissionsMapMenu> GetMenu(IList<RolePermissionsMapDto> dtos,int parentId,IList<PermissionsDto> permissions)
+        {
+            permissions = permissions ?? _permissionService.Fetch();
+            return dtos.Where(m => m.ParentId == parentId).Select(_ => new RolePermissionsMapMenu
+            {
+                  Name=permissions.FirstOrDefault(m=>m.Id==_.PermissionId).Name,
+                  ChildMenu=GetMenu(dtos,_.PermissionId,permissions)
             })?.ToList();
         }
     }

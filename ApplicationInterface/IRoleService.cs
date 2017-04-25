@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Model;
+using Model.Add;
+using Model.Dtos;
 
 namespace ApplicationInterface
 {
     public interface IRoleService:IApplicationService
     {
-        IList<Role> Fetch();
+        IList<RolesDto> Fetch();
         void Delete(int Id);
-        void Add(Role permissions);
+        int Add(Role permissions);
+        void AddRoleAndMap(RoleAddModel model);
+
+        IList<RoleMenu> GetMenu();
     }
 }

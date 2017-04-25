@@ -3,7 +3,24 @@
     <h1>权限</h1>
     @Html.Partial("~/Views/Home/AddPermission.cshtml", ViewBag.ParentPermissions as IEnumerable<PermissionsDto>)
     <hr />
-    <h1>角色</h1>
+    <h1>添加角色</h1>
     @Html.Partial("~/Views/Home/AddRoles.cshtml", ViewBag.PermissionsMenu as IEnumerable<PermissionsMenu>)
+    <hr />
+    <h1>角色查看</h1>
+    @Html.Partial("~/Views/Home/Roles.cshtml", ViewBag.RoleMenu as IEnumerable<RoleMenu>)
+
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("input[type='checkbox']").click(function () {
+                if ($(this).prop("checked") == true) {
+                    $(this).parent().find("input:checkbox").each(function (index,element) {
+                        $(element).prop("checked", true);
+                    });
+                }
+            });
+        });
+    </script>
+}

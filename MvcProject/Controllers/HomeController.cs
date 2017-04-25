@@ -9,15 +9,18 @@ namespace MvcProject.Controllers
     public class HomeController : Controller
     {
         private readonly IPermissionsService _permissionService;
-        public HomeController(IPermissionsService permissionService)
+        private readonly IRoleService _roleService;
+        public HomeController(IPermissionsService permissionService,IRoleService roleService)
         {
             _permissionService = permissionService;
+            _roleService = roleService;
         }
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
             ViewBag.ParentPermissions = _permissionService.ParentPermissions();
             ViewBag.PermissionsMenu = _permissionService.GetMenu(_permissionService.Fetch(),0);
+            ViewBag.RoleMenu = _roleService.GetMenu();
             return View();
         }
 
@@ -27,11 +30,12 @@ namespace MvcProject.Controllers
             return RedirectToAction("Index","Home");
         }
 
-        public ActionResult AddRoles(List<string> permissionsId)
+        public ActionResult AddRoles(RoleAddModel model)
         {
-
+            _roleService.AddRoleAndMap(model);
             return RedirectToAction("Index", "Home");
         }
+
 
     }
 }

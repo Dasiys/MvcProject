@@ -43,7 +43,9 @@
     <Compile Include="PermissionsDto.cs" />
     <Compile Include="PermissionsMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleMenu.cs" />
     <Compile Include="RolePermissionsMapDto.cs" />
+    <Compile Include="RolePermissionsMapMenu.cs" />
     <Compile Include="RolesDto.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -18,10 +18,11 @@ namespace Repository
         {
             _unitOfWork = unitOfWork;
         }
-        public virtual void Add(TEntity entity)
+        public virtual int Add(TEntity entity)
         {
             this._unitOfWork.RoleContext.Set<TEntity>().Attach(entity);
             this._unitOfWork.RoleContext.Entry(entity).State = EntityState.Added;
+            return entity.Id;
         }
 
         public virtual void Delete(int id)

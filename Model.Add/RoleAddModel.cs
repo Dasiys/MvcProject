@@ -17,5 +17,10 @@ namespace Model.Add
         /// 设置或获取角色编号
         /// </summary>
         public string No { set; get; }
+
+        /// <summary>
+        /// 设置或获取权限Id
+        /// </summary>
+        public List<string> PermissionIds { set; get; }
     }
 }
