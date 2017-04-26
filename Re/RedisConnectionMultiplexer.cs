@@ -38,6 +38,7 @@ namespace Re
         public bool Remove(string key)
         {
             var db = RedisConnectionMultiplexer.Manager.GetDatabase();
+            return false;
         }
     }
 }
