@@ -34,5 +34,10 @@ namespace Re
             }
             return ConnectionMultiplexer.Connect(connectionString);
         }
+
+        public bool Remove(string key)
+        {
+            var db = RedisConnectionMultiplexer.Manager.GetDatabase();
+        }
     }
 }
