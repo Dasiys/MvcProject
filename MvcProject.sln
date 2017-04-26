@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Dtos", "Model.Dtos\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Add", "Model.Add\Model.Add.csproj", "{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAbstraction", "LogAbstraction\LogAbstraction.csproj", "{974F8D61-D54F-4E91-A562-2D6654CDD1C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75846AB8-8D99-4BBB-8246-3146E8C1CA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{974F8D61-D54F-4E91-A562-2D6654CDD1C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974F8D61-D54F-4E91-A562-2D6654CDD1C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974F8D61-D54F-4E91-A562-2D6654CDD1C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974F8D61-D54F-4E91-A562-2D6654CDD1C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{51BEE9B6-604A-472A-BCD2-DD06D4F570BF} = {31CB5883-9889-4774-A85C-0E83137BDD8D}
 		{4C9BD128-D7CC-47D6-BA3F-B5765E4889B1} = {7AE38DB2-8817-4ECB-BF48-616AC7FD911F}
 		{75846AB8-8D99-4BBB-8246-3146E8C1CA8A} = {7AE38DB2-8817-4ECB-BF48-616AC7FD911F}
+		{974F8D61-D54F-4E91-A562-2D6654CDD1C4} = {0588E8F0-8C4B-4CD5-82D9-D697D924EA7E}
 	EndGlobalSection
 EndGlobal

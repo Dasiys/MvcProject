@@ -5,6 +5,7 @@ using System.Web;
 using Autofac;
 using DAL.DependencyInjection;
 using DependencyInjection;
+using LogAbstraction.DependenctInjection;
 using MvcProject.DependencyInjection;
 
 namespace MvcProject.App_Start
@@ -18,6 +19,7 @@ namespace MvcProject.App_Start
             builder.UnitOfWorkInjection();
             builder.ApplicationInjection();
             builder.AddMvcControllers();
+            builder.LogOfInjection();
             var container = builder.Build();
             container.AddMvc5();
         }
