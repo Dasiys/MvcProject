@@ -15,10 +15,19 @@
     <script type="text/javascript">
         $(function () {
             $("input[type='checkbox']").click(function () {
+                var obj = $(this).parent().parent().parent();
                 if ($(this).prop("checked") == true) {
                     $(this).parent().find("input:checkbox").each(function (index,element) {
                         $(element).prop("checked", true);
                     });
+                }
+                if ($(this).prop("checked") == false) {
+                    $(this).parent().find("input:checkbox").each(function (index, element) {
+                        $(element).prop("checked", false);
+                    });
+                    if (obj.find("input[name='PermissionIds']:checked").length == 1 && obj.children("input:first-child").prop("checked")==true) {
+                        obj.children("input:first-child").trigger("click");
+                    }
                 }
             });
         });
