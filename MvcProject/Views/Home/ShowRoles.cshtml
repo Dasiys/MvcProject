@@ -1,0 +1,16 @@
+﻿@using Model.Dtos
+@model IEnumerable<RolesDto>
+
+@{
+    ViewBag.Title = "ShowRoles";
+}
+
+@{ 
+    foreach(var item in Model)
+    {
+        <div>@item.Name&nbsp;@item.No<br /></div>
+    }
+}
+
+<h2>ShowRoles</h2>
+

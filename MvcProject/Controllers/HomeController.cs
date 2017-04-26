@@ -18,8 +18,9 @@ namespace MvcProject.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            ViewBag.ParentPermissions = _permissionService.Fetch();
-            ViewBag.PermissionsMenu = _permissionService.GetMenu(_permissionService.Fetch(),0);
+            var permissions = _permissionService.Fetch();
+            ViewBag.ParentPermissions =permissions;
+            ViewBag.PermissionsMenu = _permissionService.GetMenu(permissions,0);
             ViewBag.RoleMenu = _roleService.GetMenu();
             return View();
         }
@@ -36,6 +37,9 @@ namespace MvcProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
+        public ActionResult ShowRoles()
+        {
+            return View(_roleService.Fetch());
+        }
     }
 }

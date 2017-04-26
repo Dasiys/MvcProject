@@ -66,7 +66,6 @@ namespace Re
 
         public IList<RolePermissionsMapMenu> GetMenu(IList<RolePermissionsMapDto> dtos,int parentId,IList<PermissionsDto> permissions)
         {
-            permissions = permissions ?? _permissionService.Fetch();
             return dtos.Where(m => m.ParentId == parentId).Select(_ => new RolePermissionsMapMenu
             {
                   Name=permissions.FirstOrDefault(m=>m.Id==_.PermissionId).Name,
