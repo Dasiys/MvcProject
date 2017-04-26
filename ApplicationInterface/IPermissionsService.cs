@@ -17,9 +17,7 @@ namespace ApplicationInterface
 
         IList<PermissionsDto> Query(Expression<Func<Permissions, bool>> param);
 
-        IList<PermissionsDto> ParentPermissions();
 
-        IList<PermissionsDto> ChildPermiisons();
 
         IList<PermissionsMenu> GetMenu(IList<PermissionsDto> permissionsDto, int parentId);
     }

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\OurInterception.cs" />
     <Compile Include="Database\RoleContext.cs" />
     <Compile Include="Map\PermissionMap.cs" />
     <Compile Include="Map\RoleMap.cs" />
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
       <Project>{3ea111dc-8820-4d38-9844-9b7cd2458d6c}</Project>
       <Name>Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogAbstraction\LogAbstraction.csproj">
+      <Project>{974F8D61-D54F-4E91-A562-2D6654CDD1C4}</Project>
+      <Name>LogAbstraction</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

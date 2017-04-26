@@ -30,10 +30,6 @@ namespace Re
             _unitOfWork.Commit();
         }
 
-        public IList<PermissionsDto> ChildPermiisons()
-        {
-            return this.Query(m => !m.IsParent);
-        }
 
         public void Delete(int id)
         {
@@ -46,23 +42,17 @@ namespace Re
             return _permissionsRepository.All()?.Select(_ => new PermissionsDto
             {
                 Id = _.Id,
-                IsParent = _.IsParent,
                 Name = _.Name,
                 ParentId = _.ParentId
             })?.ToList();
         }
 
-        public IList<PermissionsDto> ParentPermissions()
-        {
-            return this.Query(m => m.IsParent);
-        }
 
         public IList<PermissionsDto> Query(Expression<Func<Permissions, bool>> param)
         {
             return _permissionsRepository.Fetch(param)?.Select(_=>new PermissionsDto
             {
                 Id = _.Id,
-                IsParent = _.IsParent,
                 Name = _.Name,
                 ParentId = _.ParentId
             })?.ToList();
@@ -73,7 +63,6 @@ namespace Re
            return permissionsDto.Where(m => m.ParentId == parentId).Select(permission => new PermissionsMenu()
             {
                 ParentId = parentId,
-                IsParent = permission.IsParent,
                 Name = permission.Name,
                 Id = permission.Id,
                 ChildMenu = GetMenu(permissionsDto, permission.Id)

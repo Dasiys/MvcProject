@@ -18,7 +18,7 @@ namespace MvcProject.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            ViewBag.ParentPermissions = _permissionService.ParentPermissions();
+            ViewBag.ParentPermissions = _permissionService.Fetch();
             ViewBag.PermissionsMenu = _permissionService.GetMenu(_permissionService.Fetch(),0);
             ViewBag.RoleMenu = _roleService.GetMenu();
             return View();
@@ -26,7 +26,7 @@ namespace MvcProject.Controllers
 
         public ActionResult AddPermissions(PermissionsAddModel permissions)
         {
-            _permissionService.Add(new Permissions { IsParent = permissions.IsParent == 1, Name = permissions.Name, ParentId = permissions.ParentId });
+            _permissionService.Add(new Permissions {  Name = permissions.Name, ParentId = permissions.ParentId });
             return RedirectToAction("Index","Home");
         }
 

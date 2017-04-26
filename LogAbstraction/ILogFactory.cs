@@ -9,26 +9,26 @@ namespace LogAbstraction
 {
   public interface ICustomerLog
     {
-        void Create<T>();
-        void Create(Type t);
-        void Create(string name);
+        ILogger Create<T>();
+        ILogger Create(Type t);
+        ILogger Create(string name);
     }
 
     public class CustomerLog : ICustomerLog
     {
-        public void Create<T>()
+        public ILogger Create<T>()
         {
-            this.Create(typeof(T));
+            return this.Create(typeof(T));
         }
 
-        public void Create(Type t)
+        public ILogger Create(Type t)
         {
-            this.Create(t.Name);
+          return  this.Create(t.Name);
         }
 
-        public void Create(string name)
+        public ILogger Create(string name)
         {
-            LogManager.GetLogger(name);
+            return LogManager.GetLogger(name);
         }
     }
 }

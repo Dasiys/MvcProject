@@ -14,10 +14,10 @@ namespace Model.Dtos
         /// </summary>
         public string Name { set; get; }
 
-        /// <summary>
-        /// 设置或获取是否为父级权限
-        /// </summary>
-        public bool IsParent { set; get; }
+        ///// <summary>
+        ///// 设置或获取是否为父级权限
+        ///// </summary>
+        //public bool IsParent { set; get; }
 
         /// <summary>
         /// 设置或获取父级Id
