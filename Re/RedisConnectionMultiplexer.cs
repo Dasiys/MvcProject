@@ -37,7 +37,12 @@ namespace Re
 
         public bool Remove(string key)
         {
-            var db = RedisConnectionMultiplexer.Manager.GetDatabase();
+            var db = Manager.GetDatabase();
+            if (db.KeyExists(key))
+            {
+                db.KeyDelete(key);
+                return true;
+            }
             return false;
         }
     }
