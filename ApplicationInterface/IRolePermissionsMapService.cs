@@ -16,5 +16,6 @@ namespace ApplicationInterface
         void Add(RolePermissionsMap permissions);
         IList<RolePermissionsMapDto> Query(Expression<Func<RolePermissionsMap, bool>> param);
         IList<RolePermissionsMapMenu> GetRolePermissionsMenu(Expression<Func<RolePermissionsMap, bool>> param);
+        void DeleteByRoleId(int roleId);
     }
 }

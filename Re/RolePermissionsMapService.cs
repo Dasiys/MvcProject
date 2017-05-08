@@ -36,6 +36,15 @@ namespace Re
             _unitOfWOrk.Commit();
         }
 
+        public void DeleteByRoleId(int roleId)
+        {
+            foreach (var variable in this.Query(m=>m.RoleId==roleId))
+            {
+                _rolePermissionsMapRepository.Delete(new RolePermissionsMap { Id =variable.Id});
+            }
+            _unitOfWOrk.Commit();
+        }
+
         public IList<RolePermissionsMapDto> Fetch()
         {
             return _rolePermissionsMapRepository.All().Select(_ => new RolePermissionsMapDto
@@ -68,7 +77,7 @@ namespace Re
         {
             return dtos.Where(m => m.ParentId == parentId).Select(_ => new RolePermissionsMapMenu
             {
-                  Name=permissions.FirstOrDefault(m=>m.Id==_.PermissionId).Name,
+                  Name=permissions.FirstOrDefault(m=>m.Id==_.PermissionId)?.Name,
                   ChildMenu=GetMenu(dtos,_.PermissionId,permissions)
             })?.ToList();
         }

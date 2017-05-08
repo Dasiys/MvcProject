@@ -1,10 +1,30 @@
 ﻿@using Model.Dtos;
 @model IEnumerable<RoleMenu>
 
-@{ 
-    foreach(var menuItem in Model)
+@{
+    foreach (var menuItem in Model)
     {
-        <span>@menuItem.Name</span>
-        @Html.Partial("~/Views/Home/RolePermissions.cshtml", menuItem.Menu)
+        <table style="border:1px solid black; width: 400px;">
+            <thead>
+            <tr>
+                <th>角色名</th>
+                <th>权限</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span>@menuItem.Name</span></td>
+                    <td>@Html.Partial("~/Views/Home/RolePermissions.cshtml", menuItem.Menu)</td>
+                    <td>
+                        @using (Html.BeginForm("Delete","Home",new{id=menuItem.Id}))
+                        {
+                            @*@Html.ActionLink("编辑", "AddPermissions", new {id = 2})*@
+                            <button type="submit">删除</button>
+                        }
+                    </td>
+                </tr>
+                </tbody>
+        </table>
     }
 }

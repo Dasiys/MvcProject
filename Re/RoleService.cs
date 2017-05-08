@@ -59,7 +59,7 @@ namespace Re
         public List<RolePermissionsMap> GetRolePermissionsMap(List<RolePermissionsMap> rolePermissionsMap, List<string> ids, IList<PermissionsDto> permissions, int parentId)
         {
             rolePermissionsMap = rolePermissionsMap ?? new List<RolePermissionsMap>();
-            if (ids.IndexOf(parentId.ToString()) < 0 && !rolePermissionsMap.Any(n => n.PermissionId == parentId) && parentId != 0)
+            if (ids.IndexOf(parentId.ToString()) < 0 && rolePermissionsMap.All(n => n.PermissionId != parentId) && parentId != 0)
             {
                 var permission = permissions.FirstOrDefault(n => n.Id == parentId);
                 rolePermissionsMap.Add(new RolePermissionsMap

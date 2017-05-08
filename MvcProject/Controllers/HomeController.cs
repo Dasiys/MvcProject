@@ -10,10 +10,12 @@ namespace MvcProject.Controllers
     {
         private readonly IPermissionsService _permissionService;
         private readonly IRoleService _roleService;
-        public HomeController(IPermissionsService permissionService,IRoleService roleService)
+        private readonly IRolePermissionsMapService _rolePermissionsMapService;
+        public HomeController(IPermissionsService permissionService,IRoleService roleService,IRolePermissionsMapService rolePermissionsMapService)
         {
             _permissionService = permissionService;
             _roleService = roleService;
+            _rolePermissionsMapService = rolePermissionsMapService;
         }
         public ActionResult Index()
         {
@@ -40,6 +42,14 @@ namespace MvcProject.Controllers
         public ActionResult ShowRoles()
         {
             return View(_roleService.Fetch());
+        }
+
+        public ActionResult Delete(int id)
+        {
+
+            _rolePermissionsMapService.DeleteByRoleId(id);
+            _roleService.Delete(id);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
