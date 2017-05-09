@@ -1,0 +1,16 @@
+﻿@using Model.Dtos;
+@model IEnumerable<RolePermissionsMapMenu>
+@{
+    ViewBag.Title = "编辑";
+}
+@foreach (var menuMap in Model)
+{
+        string isChecked = menuMap.IsChecked ? "checked" : "";
+    <ul>
+        <li>
+            <input type="checkbox" value="@menuMap.PermissionId" @isChecked name="PermissionIds"/>
+            <span>@menuMap.Name</span>
+            @Html.Partial("~/Views/Home/RolePermissionsEdit.cshtml",menuMap.ChildMenu)
+        </li>
+    </ul>
+}

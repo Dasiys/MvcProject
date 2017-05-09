@@ -51,5 +51,17 @@ namespace MvcProject.Controllers
             _roleService.Delete(id);
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Edit(int id)
+        {
+            return View(_roleService.GetEditMenu(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(RoleEditModel model)
+        {
+            _roleService.EditRoleMap(model);
+            return RedirectToAction("Index");
+        }
     }
 }

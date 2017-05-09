@@ -81,5 +81,23 @@ namespace Re
                   ChildMenu=GetMenu(dtos,_.PermissionId,permissions)
             })?.ToList();
         }
+
+        public IList<RolePermissionsMapMenu> GetRolePermissionsEditMenu(Expression<Func<RolePermissionsMap,bool>> param)
+        {
+            var dtos = this.Query(param);
+            return GetEditMenu(dtos, 0, _permissionService.Fetch());
+        }
+
+        public IList<RolePermissionsMapMenu> GetEditMenu(IList<RolePermissionsMapDto> dtos, int parentId,
+            IList<PermissionsDto> permissions)
+        {
+            return permissions.Where(_=>_.ParentId==parentId).Select(_ => new RolePermissionsMapMenu()
+            {
+                Name = _.Name,
+                IsChecked =dtos.Any(m=>m.PermissionId==_.Id),
+                ChildMenu = GetEditMenu(dtos,_.Id,permissions),
+                PermissionId = _.Id
+            })?.ToList();
+        }
     }
 }

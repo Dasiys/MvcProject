@@ -19,7 +19,7 @@
                     <td>
                         @using (Html.BeginForm("Delete","Home",new{id=menuItem.Id}))
                         {
-                            @*@Html.ActionLink("编辑", "AddPermissions", new {id = 2})*@
+                            @Html.ActionLink("编辑", "Edit", new {id = menuItem.Id})
                             <button type="submit">删除</button>
                         }
                     </td>

@@ -257,6 +257,8 @@
     <Content Include="Views\Home\RolePermissions.cshtml" />
     <Content Include="Views\Home\Roles.cshtml" />
     <Content Include="Views\Home\ShowRoles.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\RolePermissionsEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

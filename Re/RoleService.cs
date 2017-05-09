@@ -56,18 +56,45 @@ namespace Re
             _unitOfWork.Commit();
         }
 
+        public void EditRoleMap(RoleEditModel model)
+        {
+            _rolePermissionsMapService.DeleteByRoleId(model.Id);
+            var rolePermissionsMap = new List<RolePermissionsMap>();
+            var permissions = _permissionsService.Fetch();
+            model.PermissionIds.ForEach(m =>
+            {
+                var permission = permissions.FirstOrDefault(n => n.Id == int.Parse(m));
+                rolePermissionsMap = GetRolePermissionsMap(rolePermissionsMap, model.PermissionIds, permissions, permission.ParentId);
+                rolePermissionsMap.Add(new RolePermissionsMap
+                {
+                    PermissionId = int.Parse(m),
+                    RoleId = model.Id,
+                    ParentId = permission.ParentId
+                });
+            });
+            rolePermissionsMap.ForEach(m =>
+            {
+                m.RoleId = model.Id;
+                _rolePermissionsMapService.Add(m);
+            });
+            _unitOfWork.Commit();
+        }
+
         public List<RolePermissionsMap> GetRolePermissionsMap(List<RolePermissionsMap> rolePermissionsMap, List<string> ids, IList<PermissionsDto> permissions, int parentId)
         {
             rolePermissionsMap = rolePermissionsMap ?? new List<RolePermissionsMap>();
             if (ids.IndexOf(parentId.ToString()) < 0 && rolePermissionsMap.All(n => n.PermissionId != parentId) && parentId != 0)
             {
                 var permission = permissions.FirstOrDefault(n => n.Id == parentId);
-                rolePermissionsMap.Add(new RolePermissionsMap
+                if (permission != null)
                 {
-                    PermissionId = parentId,
-                    ParentId = permission.ParentId
-                });
-                rolePermissionsMap = GetRolePermissionsMap(rolePermissionsMap, ids, permissions, permission.ParentId);
+                    rolePermissionsMap.Add(new RolePermissionsMap
+                    {
+                        PermissionId = parentId,
+                        ParentId = permission.ParentId
+                    });
+                    rolePermissionsMap = GetRolePermissionsMap(rolePermissionsMap, ids, permissions, permission.ParentId);
+                }
             }
             return rolePermissionsMap;
         }
@@ -97,6 +124,20 @@ namespace Re
                 No = _.No,
                 Menu=_rolePermissionsMapService.GetRolePermissionsMenu(t=>t.RoleId==_.Id)
             })?.ToList();
+        }
+
+        public RoleMenu GetEditMenu(int id)
+        {
+            var role = _roleRepository.Fetch(m => m.Id == id).FirstOrDefault();
+            if (role != null)
+                return new RoleMenu
+                {
+                    Id = role.Id,
+                    Name = role.Name,
+                    No = role.No,
+                    Menu = _rolePermissionsMapService.GetRolePermissionsEditMenu(t=>t.RoleId== role.Id)
+                };
+            return  new RoleMenu();
         }
     }
 }

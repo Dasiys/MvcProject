@@ -1,0 +1,41 @@
+﻿@using Model.Dtos
+@model RoleMenu
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m=>m.Id)
+        <span>@Model.Name</span>
+        @Html.Partial("~/Views/Home/RolePermissionsEdit.cshtml", Model.Menu)
+        <button type="submit">提交</button>
+    }
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function() {
+            $("input[type='checkbox']").click(function () {
+                console.log(1);
+                var obj = $(this).parent().parent().parent();
+                if ($(this).prop("checked") === true) {
+                    $(this).parent().find("input:checkbox").each(function(index, element) {
+                        $(element).prop("checked", true);
+                    });
+                }
+                if ($(this).prop("checked") === false) {
+                    $(this).parent().find("input:checkbox").each(function(index, element) {
+                        $(element).prop("checked", false);
+                    });
+                    if (obj.find("input[name='PermissionIds']:checked").length == 1 &&
+                        obj.children("input:first-child").prop("checked") == true) {
+                        obj.children("input:first-child").trigger("click");
+                    }
+                }
+            });
+        });
+    </script>
+}

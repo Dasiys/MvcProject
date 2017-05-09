@@ -43,6 +43,7 @@
     <Compile Include="RoleAddModel.cs" />
     <Compile Include="PermissionsAddModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleEditModel.cs" />
     <Compile Include="RolePermissionsMapAddModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
