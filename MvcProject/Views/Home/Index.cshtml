@@ -15,12 +15,12 @@
         $(function () {
             $("input[type='checkbox']").click(function () {
                 var obj = $(this).parent().parent().parent();
-                if ($(this).prop("checked") == true) {
+                if ($(this).prop("checked") === true) {
                     $(this).parent().find("input:checkbox").each(function (index,element) {
                         $(element).prop("checked", true);
                     });
                 }
-                if ($(this).prop("checked") == false) {
+                if ($(this).prop("checked") === false) {
                     $(this).parent().find("input:checkbox").each(function (index, element) {
                         $(element).prop("checked", false);
                     });

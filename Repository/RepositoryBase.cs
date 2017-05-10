@@ -33,7 +33,7 @@ namespace Repository
 
         public virtual IQueryable<TEntity> All()
         {
-            return this._unitOfWork.RoleContext.Set<TEntity>();
+            return this._unitOfWork.RoleContext.Set<TEntity>().AsNoTracking();
         }
 
         public virtual void Delete(TEntity entity)
@@ -44,25 +44,25 @@ namespace Repository
 
         public virtual IQueryable<TEntity> Fetch(Expression<Func<TEntity, bool>> predicate)
         {
-            return this._unitOfWork.RoleContext.Set<TEntity>().Where(predicate);
+            return this._unitOfWork.RoleContext.Set<TEntity>().AsNoTracking().Where(predicate);
         }
 
         public virtual TEntity Find(int id)
         {
-            return this._unitOfWork.RoleContext.Set<TEntity>().Find(id);
+            return _unitOfWork.RoleContext.Set<TEntity>().AsNoTracking().FirstOrDefault(m => m.Id==id);
         }
 
         public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            return this._unitOfWork.RoleContext.Set<TEntity>().FirstOrDefault(predicate);
+            return this._unitOfWork.RoleContext.Set<TEntity>().AsNoTracking().FirstOrDefault(predicate);
         }
 
         public virtual IQueryable<TEntity> Page(Expression<Func<TEntity, bool>> predicate, int pageSize, int pageIndex, Expression<Func<TEntity, Type>> orderByLamda, bool isAsc)
         {
             if (isAsc)
-                return this._unitOfWork.RoleContext.Set<TEntity>().Where(predicate).OrderBy(orderByLamda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return this._unitOfWork.RoleContext.Set<TEntity>().AsNoTracking().Where(predicate).OrderBy(orderByLamda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             else
-                return this._unitOfWork.RoleContext.Set<TEntity>().Where(predicate).OrderByDescending(orderByLamda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return this._unitOfWork.RoleContext.Set<TEntity>().AsNoTracking().Where(predicate).OrderByDescending(orderByLamda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
         }
 
         public virtual void Update<TKey>(TEntity entity, params Expression<Func<TEntity, TKey>>[] columns)
