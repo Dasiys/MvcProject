@@ -19,7 +19,6 @@
     <script type="text/javascript">
         $(function() {
             $("input[type='checkbox']").click(function () {
-                console.log(1);
                 var obj = $(this).parent().parent().parent();
                 if ($(this).prop("checked") === true) {
                     $(this).parent().find("input:checkbox").each(function(index, element) {
